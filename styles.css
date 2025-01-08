@@ -1,0 +1,258 @@
+/* Réinitialisation de base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    background-color: #e6f3ff;
+    color: #333; /* Changé en noir pour meilleure lisibilité sur le fond bleu clair */
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Changé de justify à center pour un alignement vertical correct */
+}
+
+.title {
+    font-size: 0.1rem;
+    font-weight: bold;
+    background-color: maroon;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 1px;
+    margin: 0;
+    display: inline-block;
+}
+
+.nav button {
+    background-color: #3498DB;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.nav button:hover {
+    background-color: #2980B9;
+    transform: scale(1.05);
+}
+
+/* Main Content */
+.main-grid {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Home Section */
+.home {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.intro {
+    text-align: left;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.stats {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.stats-list {
+    list-style-type: none;
+}
+
+.stats-list li {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    color: #555;
+    font-weight: 500;
+}
+
+.stats-list span {
+    color: #2C3E50;
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+/* Form Styles */
+.form-grid {
+    display: grid;
+    gap: 1rem;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+input, textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+    border-color: #3498DB;
+    outline: none;
+}
+
+.submit-btn {
+    background-color: #3498DB;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #2980B9;
+}
+
+/* Dashboard */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.user-stats, .videos-container, .promotions, .leaderboard, .notifications {
+    background: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+.footer {
+    background-color: #2C3E50;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9em;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .main-grid {
+        padding: 1rem;
+    }
+    .home {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Dialog */
+.dialog {
+    background: white;
+    border: none;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    max-width: 80vw;
+}
+
+.dialog button {
+    background-color: #3498DB;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.dialog button:hover {
+    background-color: #2980B9;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.stat-item i {
+    font-size: 2em;
+    color: #2C3E50;
+    margin-bottom: 0.5rem;
+}
+
+.stat-item span {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9em;
+    color: #777;
+}
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Company Logo */
+.company-logo {
+    max-width: 120px; /* Ajustez cette valeur selon la taille désirée */
+    height: auto; /* Conserve les proportions */
+    margin-right: 1px; /* Espace entre le logo et le titre si nécessaire */
+}
+
+/* Header Grid */
+.header-grid .logo {
+    display: flex;
+    align-items: center;
+}

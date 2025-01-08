@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2C3E50">
+    <title>Réseau Tempête - Partage pour Plus de Vues</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-functions.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-messaging.js" defer></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header class="header-grid">
+        <div class="logo">
+            <img src="production.png" alt="Logo de Production Tempête" class="company-logo">
+            <h1 class="title">Réseau Tempête</h1>
+        </div>
+        <nav class="nav">
+            <button id="loginBtn"><i class="fas fa-sign-in-alt"></i> Connexion</button>
+            <button id="logoutBtn" style="display:none;"><i class="fas fa-sign-out-alt"></i> Déconnexion</button>
+        </nav>
+    </header>
+
+    <main class="main-grid">      
+        <section id="home" class="home">
+            <div class="intro">
+                <h2><i class="fas fa-bolt"></i> Bienvenue chez Production Tempête</h2>
+                <p>Production Tempête est le fer de lance d'une révolution dans le monde de la comédie entrepreneuriale. Notre mission est de faire rire, inspirer et révolutionner la manière dont les entrepreneurs se connectent et partagent leur contenu sur les réseaux sociaux. En rejoignant notre réseau, vous avez l'opportunité de booster votre visibilité, de créer des liens avec d'autres créateurs et de participer à une communauté dynamique et passionnée.</p>
+            </div>
+            <div class="stats">
+                <h3><i class="fas fa-chart-bar"></i> Statistiques Actuelles</h3>
+                <ul id="homeStats" class="stats-grid">
+                    <li class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <span id="totalUsers">0</span>
+                        <span class="stat-label">Utilisateurs Inscrits</span>
+                    </li>
+                    <li class="stat-item">
+                        <i class="fas fa-share-alt"></i>
+                        <span id="totalShares">0</span>
+                        <span class="stat-label">Partages Effectués</span>
+                    </li>
+                    <li class="stat-item">
+                        <i class="fas fa-eye"></i>
+                        <span id="totalViews">0</span>
+                        <span class="stat-label">Vues Générées</span>
+                    </li>
+                    <li class="stat-item">
+                        <i class="fas fa-trophy"></i>
+                        <span id="topSharers">0</span>
+                        <span class="stat-label">Meilleurs Partageurs du Jour</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="register" class="register" style="display:none;">
+            <h2><i class="fas fa-user-plus"></i> Inscription</h2>
+            <form id="registerForm" class="form-grid">
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-user"></i> Nom:</label>
+                    <input type="text" id="name" placeholder="Nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="surname"><i class="fas fa-user"></i> Prénom:</label>
+                    <input type="text" id="surname" placeholder="Prénom" required>
+                </div>
+                <div class="form-group">
+                    <label for="country"><i class="fas fa-globe"></i> Pays:</label>
+                    <input type="text" id="country" placeholder="Pays" required>
+                </div>
+                <div class="form-group">
+                    <label for="city"><i class="fas fa-city"></i> Ville:</label>
+                    <input type="text" id="city" placeholder="Ville" required>
+                </div>
+                <div class="form-group">
+                    <label for="number"><i class="fas fa-phone"></i> Téléphone:</label>
+                    <input type="tel" id="number" placeholder="Téléphone" required>
+                </div>
+                <div class="form-group">
+                    <label for="description"><i class="fas fa-pencil-alt"></i> Description (min 50 mots):</label>
+                    <textarea id="description" placeholder="Description (min 50 mots)" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn"><i class="fas fa-check"></i> S'inscrire</button>
+            </form>
+        </section>
+
+        <section id="dashboard" class="dashboard" style="display:none;">
+            <h2><i class="fas fa-columns"></i> Tableau de Bord</h2>
+            <div class="dashboard-grid">
+                <div id="userStats" class="user-stats"><i class="fas fa-user-cog"></i> Stats</div>
+                <div id="videosToShare" class="videos-container"><i class="fas fa-video"></i> Vidéos</div>
+                <div id="promotions" class="promotions">
+                    <h3><i class="fas fa-star"></i> Promotions</h3>
+                    <p id="currentPromotion"></p>
+                    <p id="specialPromotion"></p>
+                </div>
+                <div id="leaderboard" class="leaderboard">
+                    <h3><i class="fas fa-list-ol"></i> Classement</h3>
+                    <ul id="leaderboardList"></ul>
+                </div>
+                <div id="notifications" class="notifications">
+                    <h3><i class="fas fa-bell"></i> Notifications</h3>
+                    <ul id="notificationList"></ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p><i class="far fa-copyright"></i> 2024 Production Tempête</p>
+    </footer>
+
+    <!-- Dialog pour les confirmations ou messages -->
+    <dialog id="confirmationDialog" class="dialog">
+        <form method="dialog">
+            <p id="confirmationMessage"></p>
+            <button id="confirmBtn"><i class="fas fa-check-circle"></i> OK</button>
+        </form>
+    </dialog>
+</body>
+</html>
