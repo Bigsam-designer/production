@@ -1,5 +1,27 @@
 const firebaseConfig = {
     // Votre configuration Firebase ici
+    // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDsr-meX8fr0PIHcpQQ3qUzJb3Q6KP8o4E",
+  authDomain: "production-tempete.firebaseapp.com",
+  databaseURL: "https://production-tempete-default-rtdb.firebaseio.com",
+  projectId: "production-tempete",
+  storageBucket: "production-tempete.firebasestorage.app",
+  messagingSenderId: "1034574214388",
+  appId: "1:1034574214388:web:9acdf1c06b7606a9f09aa1",
+  measurementId: "G-P5FV4Q0W15"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 };
 
 firebase.initializeApp(firebaseConfig);
